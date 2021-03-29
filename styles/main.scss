@@ -1,0 +1,51 @@
+@import './components/header';
+@import './index';
+@import './portfolios';
+@import './portfolio-detail';
+@import './blogs';
+@import './about';
+
+html, body {
+    font-family: 'Montserrat', 'Helvetica' !important;
+    height: 100%;
+    width: 100%;
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+.base-page {
+    background-color: #ecedee;
+    color: #000;
+    min-height: 100vh;
+    padding: 150px 0;
+
+    .page-header-title {
+        font-weight: bold;
+        display: inline-block;
+        margin-bottom: 20px;
+    }
+}
+
+.absolute {
+    position: absolute;
+}
+
+.self-typed {
+    font-size: 31px;
+    font-weight: bold;
+    color: white;
+    letter-spacing: 1.4px;
+}
+
+.avatar-box {
+    img {
+        height: 50px;
+        border-radius: 50%;
+    }
+
+    .subtitle {
+        font-size: 14px;
+    }
+}
