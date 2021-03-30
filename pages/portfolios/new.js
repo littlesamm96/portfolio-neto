@@ -4,7 +4,7 @@ import withAuth from '@/hoc/withAuth'
 import { Row, Col } from 'reactstrap'
 import PortfolioForm from '@/components/PortfolioForm'
 import { useCreatePortfolio } from '@/actions/portfolios'
-import Redirect from '@/components/shared/Redirect'
+import Redirect from '@/components/shared/redirect'
 
 const PortfolioNew = ({ user, loading: userLoading }) => {
 
