@@ -3,10 +3,16 @@ import BasePage from '@/components/BasePage'
 import { useGetUser } from '@/actions/user'
 import PortfolioApi from '@/lib/api/portfolios'
 import { formatDate } from 'helpers/functions'
+import { useRouter } from 'next/router'
 
 const Portfolio = ({portfolio}) => {
 
     const { data: dataUser, loading: loadingUser } = useGetUser()
+    const router = useRouter()
+
+    if (router.isFallback) {
+        return <h1>Your page is being served ....</h1>
+    }
 
     return (
         <BaseLayout user={dataUser} loading={loadingUser} navClass="transparent">
@@ -19,13 +25,20 @@ const Portfolio = ({portfolio}) => {
                 <div className="portfolio-detail">
                     <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
                         <main role="main" class="inner page-cover">
-                            <h1 class="cover-heading">{portfolio.title}</h1>
-                            <p class="lead dates">{formatDate(portfolio.startDate)} - {formatDate(portfolio.endDate) || 'Present'}</p>
-                            <p class="lead info mb-0">{portfolio.jobTitle} | {portfolio.company} | {portfolio.location}</p>
-                            <p class="lead">{portfolio.description}</p>
-                            <p class="lead">
-                                <a href={portfolio.companyWebsite} target="_" class="btn btn-lg btn-secondary">View Site</a>
-                            </p>
+                            { router.isFallback && 
+                                <h1 class="cover-heading">Your page is being served ....</h1>
+                            }
+                            { !router.isFallback &&
+                                <>
+                                    <h1 class="cover-heading">{portfolio.title}</h1>
+                                    <p class="lead dates">{formatDate(portfolio.startDate)} - {formatDate(portfolio.endDate) || 'Present'}</p>
+                                    <p class="lead info mb-0">{portfolio.jobTitle} | {portfolio.company} | {portfolio.location}</p>
+                                    <p class="lead">{portfolio.description}</p>
+                                    <p class="lead">
+                                        <a href={portfolio.companyWebsite} target="_" class="btn btn-lg btn-secondary">View Site</a>
+                                    </p>
+                                </>
+                            }
                         </main>
                     </div>
                 </div>
@@ -45,7 +58,7 @@ export async function getStaticPaths() {
         }
     })
 
-    return { paths, fallback: false }
+    return { paths, fallback: true }
 }
 
 export async function getStaticProps({params}) {
