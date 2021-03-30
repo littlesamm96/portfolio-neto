@@ -14,7 +14,7 @@ const ROLES = [
   'Network Engineer', 
   'Digital Marketer', 
   'Cyber Security Associate', 
-  'Game Developer']
+  'Games Developer']
 
 const Index = () => {
 
