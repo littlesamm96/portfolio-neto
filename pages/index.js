@@ -93,7 +93,7 @@ const Index = () => {
                 </Typed>
                 <div className="hero-welcome-bio">
                   <h1>
-                    Happy Browsing!
+                    Happy Browsing ✌🏾!
                   </h1>
                 </div>
               </Col>
